@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "D:smileD:smilethinkjs",
+    "script": "www/production.js",
+    "cwd": "D:\smile\thinkjs",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
