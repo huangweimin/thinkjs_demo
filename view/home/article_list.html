@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>New ThinkJS Application</title>
-<link href="/static/css/foo.css" rel="stylesheet" /></head>
+<link href="/static/css/foo.css" rel="stylesheet" />
+</head>
 <body>
   <header>
     <div class="wrap">
@@ -12,27 +13,27 @@
   </header>
   <nav>
     <ul>
-      <li class="active"><a href="/">网站首页</a></li>
+      <li><a href="/">网站首页</a></li>
       <li><a href="/home/about/detail">关于我们</a></li>
       <li><a href="/home/product/list">产品中心</a></li>
-      <li><a href="/home/article/list">新闻中心</a></li>
+      <li class="active"><a href="/home/article/list">新闻中心</a></li>
       <li><a href="/home/contact/detail">联系我们</a></li>
     </ul>
   </nav>
   <div class="content">
     <div class="main">
-      <h2>“ 欢迎光临网站首页 ”</h2>
+      <h2><%=title%></h2>
     </div>
     <div class="list">
 
       <%list.forEach(function(item){%>
         <div class="item">
           <div class="step"><%=item.id%></div>
-          <h2><a href="#"><%=item.title%></a></h2>
+          <h2><a href="/home/article/list?id=<%=item.id%>"><%=item.title%></a></h2>
           <p><%=item.content%></p>
         </div>
+
       <%})%>
-      
     </div>
   </div>
 </body>

@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>New ThinkJS Application</title>
-<style>
 *{padding: 0;margin: 0;font-size: 16px;line-height: 20px;font-family: \5FAE\8F6F\96C5\9ED1;}
 a, a:visited{color:#337ab7;text-decoration: none;}
 a:hover{opacity: 0.7;}
@@ -22,39 +16,5 @@ nav{ width:100%; height:40px; line-height: 40px;background: #eee;}
 nav ul{width:1000px;margin: 0 auto;}
 nav ul li{width: 20%; height: 40px; line-height: 40px;float:left; text-align: center;list-style: none; }
 nav .active{font-weight: bold;}
-.main h2{font-size:20px;color: #4A6495;}
-</style>
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <h1>网站名称</h1>
-    </div>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="#">网站首页</a></li>
-      <li><a href="#">关于我们</a></li>
-      <li><a href="#">产品中心</a></li>
-      <li class="active"><a href="#">新闻中心</a></li>
-      <li><a href="#">联系我们</a></li>
-    </ul>
-  </nav>
-  <div class="content">
-    <div class="main">
-      <h2>“ 欢迎光临网站首页 ”</h2>
-    </div>
-    <div class="list">
-
-      <%list.forEach(function(item){%>
-        <div class="item">
-          <div class="step"><%=item.id%></div>
-          <h2><a href="#"><%=item.title%></a></h2>
-          <p><%=item.content%></p>
-        </div>
-
-      <%})%>
-    </div>
-  </div>
-</body>
-</html>
+.main h2{font-size:20px;color: #4A6495;padding-bottom: 20px;}
+.main p{line-height:24px;}
