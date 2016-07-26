@@ -14,7 +14,7 @@ code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;
 .list .item p{line-height: 30px;margin-top: 10px}
 nav{ width:100%; height:40px; line-height: 40px;background: #eee;}
 nav ul{width:1000px;margin: 0 auto;}
-nav ul li{width: 20%; height: 40px; line-height: 40px;float:left; text-align: center;list-style: none; }
+nav ul li{width: 19%; height: 40px; line-height: 40px;float:left; text-align: center;list-style: none; }
 nav .active{font-weight: bold;}
 .main h2{font-size:20px;color: #4A6495;padding-bottom: 20px;}
 .main p{line-height:24px;}

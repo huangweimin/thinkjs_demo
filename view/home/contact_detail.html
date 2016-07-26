@@ -1,30 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>New ThinkJS Application</title>
-<link href="/static/css/foo.css" rel="stylesheet" />
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <h1>网站名称</h1>
-    </div>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="/">网站首页</a></li>
-      <li><a href="/home/about/detail">关于我们</a></li>
-      <li><a href="/home/product/list">产品中心</a></li>
-      <li><a href="/home/article/list">新闻中心</a></li>
-      <li class="active"><a href="/home/contact/detail">联系我们</a></li>
-    </ul>
-  </nav>
-  <div class="content">
-    <div class="main">
-      <h2><%=title%></h2>
-      <p><%=content%></p>
-    </div>
+<%include inc/header.html%>
+
+<div class="content">
+  <div class="main">
+    <h2><%=title%></h2>
+    <p><%=content%></p>
   </div>
-</body>
-</html>
+</div>
+
+
+<%include inc/footer.html%>
