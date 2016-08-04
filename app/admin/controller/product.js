@@ -8,15 +8,12 @@ module.exports = think.controller(Base, {
    * @return {Promise} []
    */
    addAction: function(self){
-     
+
      console.log('in')
-     this.model('catalog').where({id:1}).select().then(result=>{
-       var item = result[0];
-       this.assign({
-         title:item.name,
-         list:item.article
-       })
+     
+     this.model('article').add({title: "xxx", content: "yyy",catalogId:"1"}).then(result=>{
        return this.display();
      })
+
    }
 });
