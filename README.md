@@ -23,6 +23,18 @@ npm start
 http://127.0.0.1:8360/
 ```
 
+## 数据库管理
+
+```
+新建数据库 test 
+
+导入 /databases 文件夹的数据表  
+
+数据库连接配置文件：/app/common/config/db.js 
+
+```
+
+
 ## Deploy with pm2(扩展)
 
 Use pm2 to deploy app on production enviroment.
