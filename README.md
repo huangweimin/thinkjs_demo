@@ -1,19 +1,29 @@
 
 Application created by [ThinkJS](http://www.thinkjs.org)
 
-## Install dependencies
+NodeJs 开发企业站点
+
+## 安装依赖
 
 ```
-npm install
+项目安装后，进入项目目录，执行 npm install 安装依赖，也可以使用 taobao 源进行安装。
+npm install 或者
+npm install --registry=https://registry.npm.taobao.org --verbose
 ```
 
-## Start server
+## 开启服务
 
 ```
 npm start
 ```
 
-## Deploy with pm2
+## 浏览地址
+
+```
+http://127.0.0.1:8360/
+```
+
+## Deploy with pm2(扩展)
 
 Use pm2 to deploy app on production enviroment.
 
