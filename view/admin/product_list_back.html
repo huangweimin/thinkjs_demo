@@ -1,0 +1,19 @@
+<%include inc/header.html%>
+
+  <div class="content">
+
+      <h2>“ 文章列表 ”</h2>
+      <div class="list">
+
+        <%list.forEach(function(item){%>
+          <div class="item">
+            <div class="step"><%=item.id%></div>
+            <h2><a href="#"><%=item.title%></a></h2>
+            <p><%=item.content%></p>
+          </div>
+        <%})%>
+
+      </div>
+  </div>
+
+<%include inc/footer.html%>

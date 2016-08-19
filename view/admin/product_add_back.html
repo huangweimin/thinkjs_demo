@@ -1,0 +1,58 @@
+<%include inc/header.html%>
+
+  <div class="content">
+
+      <h2>“ 添加文章 ”</h2>
+      <form  style="margin-top:100px;">
+        <div class="form-group">
+          <label for="exampleInputEmail1">标题</label>
+          <input type="text" class="form-control" id="name"  placeholder="标题名字">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">简介</label>
+          <textarea class="form-control" id="intro" rows="3" placeholder="文章简介" ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">目录</label>
+            <select id="catalogId"  class="form-control">
+              <option value="0">选择目录</option>
+              <option value="1">产品</option>
+              <option value="2">新闻</option>
+              <option value="3">关于我们</option>
+              <option value="4">联系我们</option>
+            </select>
+        </div>
+        <button type="button" id="addProduct" class="btn btn-default">Submit</button>
+      </form>
+  </div>
+
+<%include inc/footer.html%>
+
+
+<script>
+  $(function(){
+
+    $("#addProduct").click(function(){
+
+      var _name = $('#name').val();
+      var _intro = $('#intro').val();
+      var _catalogId = $('#catalogId').val();
+      $.ajax({
+            type: "POST",
+            url: "/admin/product/iadd",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ "_name": _name,"_intro":_intro ,"_catalogId":_catalogId}),
+            success: function (result) {
+                alert(result.msg);
+            },
+            error : function() {
+                 alert(result.msg);
+            }
+        });
+
+
+    })
+
+  })
+</script>
