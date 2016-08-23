@@ -45,12 +45,15 @@
 								K.ctrl(document, 13, function() {
 									self.sync();
 									K('form[name=example]')[0].submit();
+                  alert('a')
 								});
 								K.ctrl(self.edit.doc, 13, function() {
 									self.sync();
 									K('form[name=example]')[0].submit();
 								});
-							}
+							},afterBlur:function(){
+                  this.sync();
+              }
 						});
 						prettyPrint();
 
@@ -94,9 +97,6 @@
       var _intro = $('#intro').val();
       var _catalogId = $('#catalogId').val();
 
-      console.log(_name)
-      console.log(_intro)
-      console.log(_catalogId)
       $.ajax({
             type: "POST",
             url: "/admin/product/iadd",
