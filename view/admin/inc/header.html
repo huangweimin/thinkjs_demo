@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>管理后台</title>
 
     <!-- Bootstrap -->
     <link href="/static/Admin/css/public.css" rel="stylesheet" type="text/css">
@@ -23,14 +23,14 @@
 
     <div id="dcWrap"> <div id="dcHead">
      <div id="head">
-      <div class="logo"><a href="index.html"><img src="/static/Admin/images/dclogo.png" alt="logo"></a></div>
+      <div class="logo"><a href="/admin"><img src="/static/Admin/images/dclogo.png" alt="logo"></a></div>
       <div class="nav">
        <ul>
         <li class="M"><a href="JavaScript:void(0);" class="topAdd">新建</a>
          <div class="drop mTopad"><a href="/admin/product/add">文章</a><a href="/admin/catalog/add">分类</a></div>
         </li>
-        <li><a href="#" target="_blank">查看站点</a></li>
-        <li><a href="index.php?rec=clear_cache">清除缓存</a></li>
+        <li><a href="/" target="_blank">查看站点</a></li>
+        <li><a href="#">清除缓存</a></li>
        </ul>
        <ul class="navRight">
         <li class="M noLeft"><a href="JavaScript:void(0);">您好，admin</a>
@@ -49,11 +49,11 @@
      <ul class="top">
       <li><a href="/admin"><i class="home"></i><em>管理首页</em></a></li>
      </ul>
-     <ul style="display:none;">
-      <li><a href="system.html"><i class="system"></i><em>系统设置</em></a></li>
-      <li><a href="nav.html"><i class="nav"></i><em>自定义导航栏</em></a></li>
-      <li><a href="show.html"><i class="show"></i><em>首页幻灯广告</em></a></li>
-      <li><a href="page.html"><i class="page"></i><em>单页面管理</em></a></li>
+     <ul>
+      <li><a href="/admin/system/list"><i class="system"></i><em>系统设置</em></a></li>
+      <li><a href="/admin/nav/list"><i class="nav"></i><em>自定义导航栏</em></a></li>
+      <li><a href="/admin/banner/list"><i class="show"></i><em>首页幻灯广告</em></a></li>
+      <li><a href="/admin/page/list"><i class="page"></i><em>单页面管理</em></a></li>
      </ul>
       <ul>
       <li><a href="/admin/catalog/list"><i class="articleCat"></i><em>文章分类</em></a></li>
