@@ -10,10 +10,17 @@ module.exports = think.controller(Base, {
   indexAction: function(self){
 
     this.model('article').select().then(result=>{
+
       this.assign({
+
         list:result
+
       })
+
       return this.display();
+
     })
+
   }
+  
 });

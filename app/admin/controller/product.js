@@ -16,15 +16,25 @@ module.exports = think.controller(Base, {
    iaddAction: function(self){
 
      var allParams = this.post();
+     
      if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
+
        this.model('article').add({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
+
          return this.json({success: true , msg : "添加成功"});
+
        }).catch(e=>{
+
          return this.json({success: false , msg : e.message});
+
        })
+
      }else{
+
        return this.json({success: false , msg : "必须传递参数"});
+
      }
+
    },
 
    listAction :function(self){
@@ -42,14 +52,23 @@ module.exports = think.controller(Base, {
    deleteAction :function(self){
 
       var allParams = this.post();
+
       if(allParams._id){
+
         this.model('article').where({id: ["=", allParams._id]}).delete().then(result=>{
+
           return this.json({success: true , msg : "删除成功"});
+
         }).catch(e=>{
+
           return this.json({success: false , msg : e.message});
+
         })
+
       }else{
+
         return this.json({success: false , msg : "请选择文章"});
+
       }
 
    },
@@ -77,12 +96,19 @@ module.exports = think.controller(Base, {
      var allParams = this.post();
 
      if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
+
        this.model('article').where({id: ["=", allParams._id]}).update({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
+
          return this.json({success: true , msg : "修改成功"});
+
        }).catch(e=>{
+
          return this.json({success: false , msg : e.message});
+
        })
+
      }else{
+
        return this.json({success: false , msg : "必须传递参数"});
      }
 

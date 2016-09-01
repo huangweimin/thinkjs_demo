@@ -16,15 +16,25 @@ module.exports = think.controller(Base, {
    iaddAction: function(self){
 
      var allParams = this.post();
+
      if(allParams._name != '' ){
+
        this.model('catalog').add({name: allParams._name }).then(result=>{
+
          return this.json({success: true , msg : "添加成功"});
+
        }).catch(e=>{
+
          return this.json({success: false , msg : e.message});
+
        })
+
      }else{
+
        return this.json({success: false , msg : "必须传递参数"});
+
      }
+
    },
 
    listAction :function(self){
@@ -32,9 +42,13 @@ module.exports = think.controller(Base, {
      this.model('catalog').select().then(result=>{
 
        this.assign({
+
          list:result
+
        })
+
        return this.display();
+
      })
 
    },
@@ -42,14 +56,23 @@ module.exports = think.controller(Base, {
    deleteAction :function(self){
 
       var allParams = this.post();
+
       if(allParams._id){
+
         this.model('catalog').where({id: ["=", allParams._id]}).delete().then(result=>{
+
           return this.json({success: true , msg : "删除成功"});
+
         }).catch(e=>{
+
           return this.json({success: false , msg : e.message});
+
         })
+
       }else{
+
         return this.json({success: false , msg : "请选择分类"});
+        
       }
 
    }
