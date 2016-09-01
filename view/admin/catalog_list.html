@@ -27,22 +27,61 @@
 									<%=item.name%></a>
 							</td>
 							<td align="center">
-								<a href="#">编辑</a>|
-								<a href="#">删除</a></td>
+								<a href="#" data-id="<%=item.id%>" class="catalog-edit">编辑</a>|
+								<a href="#" data-id="<%=item.id%>" class="catalog-delete">删除</a></td>
 						</tr>
 						<%})%></table>
 				<div class="action">
-					<select name="action" onchange="douAction()">
+					<select name="action">
 						<option value="0">请选择...</option>
 						<option value="del_all">删除</option>
-						<option value="category_move">移动分类至</option></select>
-					<select name="new_cat_id" style="display:none">
+						<option value="move_all">移动到</option>
+						</select>
+					<select name="new_cat_id" style="display:none;">
 						<option value="0">未分类</option>
 						<option value="1">公司动态</option>
-						<option value="2">行业新闻</option></select>
+						<option value="2">行业新闻</option>
+					</select>
 					<input name="submit" class="btn" type="submit" value="执行" /></div>
 			</form>
 		</div>
 		<div class="clear"></div>
 	</div>
 	<%include inc/footer.html%>
+	<script>
+
+	  $(function(){
+
+	    //删除分类
+	    $(".catalog-delete").click(function(){
+
+				 if(confirm("确定要删除分类?")){
+
+					 var _id = $(this).attr('data-id');
+
+		       $.ajax({
+		             type: "POST",
+		             url: "/admin/catalog/delete",
+		             contentType: "application/json",
+		             dataType: "json",
+		             data: JSON.stringify({ "_id": _id}),
+		             success: function (result) {
+		                 alert(result.msg);
+		                 location.href = "/admin/catalog/list"
+		             },
+		             error : function() {
+		                  alert(result.msg);
+		                  return false;
+		             }
+		         });
+
+				 }else{
+
+					 return false;
+
+				 }
+
+	    })
+
+	  })
+	</script>

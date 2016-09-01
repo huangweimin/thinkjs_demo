@@ -37,6 +37,21 @@ module.exports = think.controller(Base, {
        return this.display();
      })
 
+   },
+
+   deleteAction :function(self){
+
+      var allParams = this.post();
+      if(allParams._id){
+        this.model('catalog').where({id: ["=", allParams._id]}).delete().then(result=>{
+          return this.json({success: true , msg : "删除成功"});
+        }).catch(e=>{
+          return this.json({success: false , msg : e.message});
+        })
+      }else{
+        return this.json({success: false , msg : "请选择分类"});
+      }
+
    }
 
 });

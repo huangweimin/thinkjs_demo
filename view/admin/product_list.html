@@ -16,10 +16,11 @@
 				<input name="keyword" type="text" class="inpMain" value="" size="20" />
 				<input name="submit" class="btnGray" type="submit" value="筛选" /></form>
 			<div class="action" style="float:right; margin-top:0px;">
-				<select name="action" onchange="douAction()">
+				<select name="action" >
 					<option value="0">请选择...</option>
 					<option value="del_all">删除</option>
-					<option value="category_move">移动分类至</option></select>
+					<option value="move_all">移动到</option>
+					</select>
 				<select name="new_cat_id" style="display:none">
 					<option value="0">未分类</option>
 					<option value="1">公司动态</option>
@@ -54,8 +55,8 @@
 							<td align="center">
 								<%=item.joinTime%></td>
 							<td align="center">
-								<a href="#">编辑</a>|
-								<a href="#">删除</a></td>
+								<a href="#" data-id="<%=item.id%>" class="product-edit">编辑</a>|
+								<a href="#" data-id="<%=item.id%>" class="product-delete">删除</a></td>
 						</tr>
 						<%})%></table>
 			</form>
@@ -68,3 +69,40 @@
 </div>
 <div class="clear"></div>
 <%include inc/footer.html%>
+<script>
+
+  $(function(){
+
+    //删除文章
+    $(".product-delete").click(function(){
+
+			 if(confirm("确定要删除文章?")){
+
+				 var _id = $(this).attr('data-id');
+
+	       $.ajax({
+	             type: "POST",
+	             url: "/admin/product/delete",
+	             contentType: "application/json",
+	             dataType: "json",
+	             data: JSON.stringify({ "_id": _id}),
+	             success: function (result) {
+	                 alert(result.msg);
+	                 location.href = "/admin/product/list"
+	             },
+	             error : function() {
+	                  alert(result.msg);
+	                  return false;
+	             }
+	         });
+
+			 }else{
+
+				 return false;
+
+			 }
+
+    })
+
+  })
+</script>
