@@ -52,6 +52,40 @@ module.exports = think.controller(Base, {
         return this.json({success: false , msg : "请选择文章"});
       }
 
+   },
+
+   editAction: function(self){
+
+     var _id = this.get();
+
+     if(_id){
+
+       this.model('article').where({id:_id.id}).find().then(result=>{
+
+         this.assign(result);
+
+         return this.display();
+
+       });
+
+     }
+
+   },
+
+   updateAction: function(self){
+
+     var allParams = this.post();
+
+     if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
+       this.model('article').where({id: ["=", allParams._id]}).update({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
+         return this.json({success: true , msg : "修改成功"});
+       }).catch(e=>{
+         return this.json({success: false , msg : e.message});
+       })
+     }else{
+       return this.json({success: false , msg : "必须传递参数"});
+     }
+
    }
 
 });

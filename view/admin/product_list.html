@@ -36,7 +36,7 @@
 						<th width="40" align="center">编号</th>
 						<th align="left">文章名称</th>
 						<th width="150" align="center">文章分类</th>
-						<th width="150" align="center">添加日期</th>
+						<th width="150" align="center">操作日期</th>
 						<th width="80" align="center">操作</th></tr>
 					<%list.forEach(function(item){%>
 						<tr>
@@ -55,7 +55,7 @@
 							<td align="center">
 								<%=item.joinTime%></td>
 							<td align="center">
-								<a href="#" data-id="<%=item.id%>" class="product-edit">编辑</a>|
+								<a href="/admin/product/edit?id=<%=item.id%>" data-id="<%=item.id%>" class="product-edit">编辑</a>|
 								<a href="#" data-id="<%=item.id%>" class="product-delete">删除</a></td>
 						</tr>
 						<%})%></table>
