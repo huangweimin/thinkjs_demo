@@ -16,8 +16,8 @@ module.exports = think.controller(Base, {
    iaddAction: function(self){
 
      var allParams = this.post();
-     if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
-       this.model('article').add({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
+     if(allParams._name != '' ){
+       this.model('catalog').add({name: allParams._name }).then(result=>{
          return this.json({success: true , msg : "添加成功"});
        }).catch(e=>{
          return this.json({success: false , msg : e.message});
@@ -29,7 +29,7 @@ module.exports = think.controller(Base, {
 
    listAction :function(self){
 
-     this.model('article').select().then(result=>{
+     this.model('catalog').select().then(result=>{
 
        this.assign({
          list:result
