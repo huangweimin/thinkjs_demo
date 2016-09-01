@@ -4,7 +4,7 @@ var Base = require('./base.js');
 
 module.exports = think.controller(Base, {
   /**
-   * index action
+   * demo action
    * @return {Promise} []
    */
    addAction: function(self){
@@ -12,11 +12,14 @@ module.exports = think.controller(Base, {
      return this.display();
 
    },
-
+   /**
+    * iadd action
+    * @return {Promise} []
+    */
    iaddAction: function(self){
 
      var allParams = this.post();
-     
+
      if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
 
        this.model('article').add({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
@@ -36,7 +39,10 @@ module.exports = think.controller(Base, {
      }
 
    },
-
+   /**
+    * list action
+    * @return {Promise} []
+    */
    listAction :function(self){
 
      this.model('article').select().then(result=>{
@@ -48,7 +54,10 @@ module.exports = think.controller(Base, {
      })
 
    },
-
+   /**
+    * delete action
+    * @return {Promise} []
+    */
    deleteAction :function(self){
 
       var allParams = this.post();
@@ -72,7 +81,10 @@ module.exports = think.controller(Base, {
       }
 
    },
-
+   /**
+    * edit action
+    * @return {Promise} []
+    */
    editAction: function(self){
 
      var _id = this.get();
@@ -90,7 +102,10 @@ module.exports = think.controller(Base, {
      }
 
    },
-
+   /**
+    * update action
+    * @return {Promise} []
+    */
    updateAction: function(self){
 
      var allParams = this.post();

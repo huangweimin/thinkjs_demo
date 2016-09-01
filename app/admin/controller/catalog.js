@@ -12,7 +12,10 @@ module.exports = think.controller(Base, {
      return this.display();
 
    },
-
+   /**
+    * iadd action
+    * @return {Promise} []
+    */
    iaddAction: function(self){
 
      var allParams = this.post();
@@ -36,7 +39,10 @@ module.exports = think.controller(Base, {
      }
 
    },
-
+   /**
+    * list action
+    * @return {Promise} []
+    */
    listAction :function(self){
 
      this.model('catalog').select().then(result=>{
@@ -52,7 +58,10 @@ module.exports = think.controller(Base, {
      })
 
    },
-
+   /**
+    * delete action
+    * @return {Promise} []
+    */
    deleteAction :function(self){
 
       var allParams = this.post();
@@ -72,7 +81,7 @@ module.exports = think.controller(Base, {
       }else{
 
         return this.json({success: false , msg : "请选择分类"});
-        
+
       }
 
    }
