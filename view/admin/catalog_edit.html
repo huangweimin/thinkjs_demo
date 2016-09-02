@@ -1,0 +1,64 @@
+<%include inc/header.html%>
+<div id="dcMain">
+	<!-- 当前位置 -->
+	<div id="urHere">管理中心
+		<b>></b>
+		<strong>添加分类</strong></div>
+	<div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+		<h3>
+			<a href="article.html" class="actionBtn">分类列表</a>修改分类</h3>
+		<form action="article.php?rec=insert" method="post" enctype="multipart/form-data">
+			<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+				<tr>
+					<td width="90" align="right">分类名称</td>
+					<td>
+						<input type="text" name="catalogName" value="<%=name%>" size="80" class="inpMain" id="catalogName" /></td>
+				</tr>
+				<tr>
+					<td align="right">缩略图</td>
+					<td>
+						<input type="file" name="image" size="38" class="inpFlie" /></tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="button" id="editCtalog" class="btn btn-default">修改</button></td>
+				</tr>
+			</table>
+			<input type="hidden" class="catalog_id" value="<%=id%>">
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<%include inc/footer.html%>
+<script>
+
+
+  $(function(){
+
+
+    //修改目录
+    $("#editCtalog").click(function(){
+
+      var _name = $('#catalogName').val();
+      var _id = $('.catalog_id').val();
+
+      $.ajax({
+            type: "POST",
+            url: "/admin/catalog/update",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ "_id": _id, "_name": _name}),
+            success: function (result) {
+                alert(result.msg);
+                location.href = "/admin/catalog/list"
+            },
+            error : function() {
+                 alert(result.msg);
+                 return false;
+            }
+        });
+
+    })
+
+  })
+</script>

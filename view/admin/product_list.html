@@ -12,7 +12,8 @@
 				<select name="cat_id">
 					<option value="0">未分类</option>
 					<option value="1">公司动态</option>
-					<option value="2">行业新闻</option></select>
+					<option value="2">行业新闻</option>
+				</select>
 				<input name="keyword" type="text" class="inpMain" value="" size="20" />
 				<input name="submit" class="btnGray" type="submit" value="筛选" /></form>
 			<div class="action" style="float:right; margin-top:0px;">
@@ -21,10 +22,12 @@
 					<option value="del_all">删除</option>
 					<option value="move_all">移动到</option>
 					</select>
-				<select name="new_cat_id" style="display:none">
-					<option value="0">未分类</option>
-					<option value="1">公司动态</option>
-					<option value="2">行业新闻</option></select>
+							<select name="new_cat_id" style="display:none">
+								<%list.forEach(function(item){%>
+									<option value=<%=item.catalogId%></a>><%=item.name%></a></option>
+								<%})%>
+							</select>
+
 				<input name="submit" class="btn" type="submit" value="执行" /></div>
 		</div>
 		<div id="list">
@@ -50,7 +53,7 @@
 							</td>
 							<td align="center">
 								<a href="#">
-									<%=item.catalogId%></a>
+									<%=item.name%></a>
 							</td>
 							<td align="center">
 								<%=item.joinTime%></td>
