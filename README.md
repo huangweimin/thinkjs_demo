@@ -32,6 +32,11 @@ http://127.0.0.1:8360/
 
 数据库连接配置文件：/app/common/config/db.js 
 
+表结构：
+think_article : id  title  content  catalogId   joinTime
+think_catalog : id  name
+
+
 ```
 
 
