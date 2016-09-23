@@ -91,13 +91,14 @@
       var _intro = $('#intro').val();
       var _catalogId = $('#catalogId').val();
       var _joinTime = date2str(new Date(),"yyyy-MM-dd hh:mm");
+      var _inpFlie = $('.inpFlie').val();
 
       $.ajax({
             type: "POST",
             url: "/admin/product/iadd",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify({ "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime}),
+            data: JSON.stringify({ "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime,"_inpFlie":_inpFlie}),
             success: function (result) {
                 alert(result.msg);
                 location.href = "/admin/product/list"

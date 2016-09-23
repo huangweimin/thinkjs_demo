@@ -9,7 +9,7 @@
       <%list.forEach(function(item){%>
         <div class="item">
           <div class="step"><%=item.id%></div>
-          <h2><a href="#"><%=item.title%></a></h2>
+          <h2><a href="/home/article/detail?id=<%=item.id%>"><%=item.title%></a></h2>
           <p><%=item.content%></p>
         </div>
       <%})%>

@@ -10,7 +10,7 @@ module.exports = think.controller(Base, {
 
   detailAction: function(self){
 
-      this.model('article').where({id:'5'}).find().then(result=>{
+      this.model('article').where({id:'9'}).find().then(result=>{
 
         this.assign(result);
 
