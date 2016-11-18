@@ -6,6 +6,7 @@
     "start": "node www/development.js"
   },
   "dependencies": {
+    "qiniu": "^6.1.13",
     "thinkjs": "2.2.x"
   },
   "repository": "",
