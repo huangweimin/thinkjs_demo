@@ -10,9 +10,13 @@
 		<div class="filter">
 			<form action="article.php" method="post">
 				<select name="cat_id">
-					<option value="0">未分类</option>
+
+					<%cate.forEach(function(ca){%>
+						<option value="<%=ca.id%>"><%=ca.name%></option>
+					<%})%>
+					<!--<option value="0">未分类</option>
 					<option value="1">公司动态</option>
-					<option value="2">行业新闻</option>
+					<option value="2">行业新闻</option>-->
 				</select>
 				<input name="keyword" type="text" class="inpMain" value="" size="20" />
 				<input name="submit" class="btnGray" type="submit" value="筛选" /></form>
@@ -22,11 +26,6 @@
 					<option value="del_all">删除</option>
 					<option value="move_all">移动到</option>
 					</select>
-							<select name="new_cat_id" style="display:none">
-								<%list.forEach(function(item){%>
-									<option value=<%=item.catalogId%></a>><%=item.name%></a></option>
-								<%})%>
-							</select>
 
 				<input name="submit" class="btn" type="submit" value="执行" /></div>
 		</div>
@@ -44,9 +43,9 @@
 					<%list.forEach(function(item){%>
 						<tr>
 							<td align="center">
-								<input type="checkbox" name="checkbox[]" value="'+<%=item.id%>+'" /></td>
+								<input type="checkbox" name="checkbox[]" value="'<%=item.id%>'" /></td>
 							<td align="center">
-								<%=item.id%></td>
+								<%=item.id%> </td>
 							<td>
 								<a href="#">
 									<%=item.title%></a>
@@ -82,7 +81,7 @@
 			 if(confirm("确定要删除文章?")){
 
 				 var _id = $(this).attr('data-id');
-
+				 console.log(_id)
 	       $.ajax({
 	             type: "POST",
 	             url: "/admin/product/delete",

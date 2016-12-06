@@ -84,14 +84,22 @@ module.exports = think.controller(Base, {
     * @return {Promise} []
     */
    listAction :function(self){
-     this.model('article').getList().then(result=>{
-       //select a.id,a.name,b.name from a join b on b.Id = a.catalogId;
-       //console.log(result)
-       this.assign({
-         list:result
-       })
-       return this.display();
+
+     this.model('catalog').select().then(cate=>{
+
+  	    this.model('article').getList().then(list=>{
+
+         		this.assign({
+           		list:list,
+  			      cate:cate
+         		})
+
+            return this.display();
+
+       	})
+
      })
+
    },
 
    /**
