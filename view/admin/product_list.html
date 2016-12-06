@@ -8,18 +8,15 @@
 		<h3>
 			<a href="/admin/product/add" class="actionBtn add">添加文章</a>文章列表</h3>
 		<div class="filter">
-			<form action="article.php" method="post">
-				<select name="cat_id">
+				<select name="cat_id" id="screenCat">
 
 					<%cate.forEach(function(ca){%>
 						<option value="<%=ca.id%>"><%=ca.name%></option>
 					<%})%>
-					<!--<option value="0">未分类</option>
-					<option value="1">公司动态</option>
-					<option value="2">行业新闻</option>-->
+
 				</select>
-				<input name="keyword" type="text" class="inpMain" value="" size="20" />
-				<input name="submit" class="btnGray" type="submit" value="筛选" /></form>
+				<input name="keyword" type="text" class="inpMain" id="screenVal" value="" size="20" />
+				<input name="submit" class="btnGray" type="submit" id="screenBtn" value="筛选" />
 			<div class="action" style="float:right; margin-top:0px;">
 				<select name="action" >
 					<option value="0">请选择...</option>
@@ -105,6 +102,17 @@
 			 }
 
     })
+
+		//文章筛选
+		$('#screenBtn').click(function(){
+
+			var cate = $('#screenCat').val();
+			var val = $('#screenVal').val();
+
+			console.log(cate)
+			console.log(val)
+
+		})
 
   })
 </script>
