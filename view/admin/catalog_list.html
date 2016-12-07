@@ -8,7 +8,6 @@
 		<h3>
 			<a href="/admin/catalog/add" class="actionBtn add">添加分类</a>文章分类</h3>
 		<div id="list">
-			<form name="action" method="post" action="article.php?rec=action">
 				<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
 					<tr>
 						<th width="22" align="center">
@@ -31,19 +30,14 @@
 								<a href="#" data-id="<%=item.id%>" class="catalog-delete">删除</a></td>
 						</tr>
 						<%})%></table>
-				<div class="action">
-					<select name="action">
-						<option value="0">请选择...</option>
-						<option value="del_all">删除</option>
-						<option value="move_all">移动到</option>
-						</select>
-					<select name="new_cat_id" style="display:none;">
-						<option value="0">未分类</option>
-						<option value="1">公司动态</option>
-						<option value="2">行业新闻</option>
-					</select>
-					<input name="submit" class="btn" type="submit" value="执行" /></div>
-			</form>
+						<div class="action">
+							<select name="action">
+								<option value="0">请选择...</option>
+								<option value="del_all">删除</option>
+								<option value="del_all">全部删除</option>
+							</select>
+							<input name="submit" class="btn" type="submit" value="执行" />
+					</div>
 		</div>
 		<div class="clear"></div>
 	</div>

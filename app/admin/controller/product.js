@@ -85,20 +85,21 @@ module.exports = think.controller(Base, {
     */
    listAction :function(self){
 
-     this.model('catalog').select().then(cate=>{
+     var params = this.get();
+     var ctgid = params.cid ? params.cid : -1;
+     var title = params.t ? params.t : "";
 
-  	    this.model('article').getList().then(list=>{
+     Promise.all([this.model('catalog').select(),this.model('article').getList(ctgid,title)])
+      .then(arr=>{
 
-         		this.assign({
-           		list:list,
-  			      cate:cate
-         		})
+        this.assign({
+          list:arr[1],
+          cate:arr[0],
+          params:JSON.stringify(params)
+        })
 
-            return this.display();
-
-       	})
-
-     })
+        return this.display();
+      });
 
    },
 

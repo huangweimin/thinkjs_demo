@@ -100,8 +100,8 @@
             dataType: "json",
             data: JSON.stringify({ "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime,"_inpFlie":_inpFlie}),
             success: function (result) {
-                alert(result.msg);
-                location.href = "/admin/product/list"
+               alert(result.msg);
+               location.href = "/admin/product/list"
             },
             error : function() {
                  alert(result.msg);
