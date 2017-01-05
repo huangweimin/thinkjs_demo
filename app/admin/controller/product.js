@@ -2,6 +2,8 @@
 
 var Base = require('./base.js');
 var qiniu = require("qiniu");
+var fs = require('fs');
+var path = require('path');
 
 qiniu.conf.ACCESS_KEY = 'f5ID3p9tN6F--DRVlHckTAfO8415kfy-Pm9-tSv_';
 qiniu.conf.SECRET_KEY = 'R4OzTpT1zRZW6RwwgC500M84S1MOcr5eBeiNVAFz';
@@ -26,8 +28,28 @@ module.exports = think.controller(Base, {
 
      if(allParams._name != '' && allParams._intro != '' && allParams._catalogId != ''){
 
-       this.model('article').add({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId,joinTime:allParams._joinTime}).then(result=>{
+       let file = this.file('image');
+       var filepath = file.path;
+       //文件上传后，需要将文件移动到项目其他地方，否则会在请求结束时删除掉该文件
+      var uploadPath = think.RESOURCE_PATH + '/upload';
+      think.mkdir(uploadPath);
+      var basename = path.basename(filepath);
+      fs.renameSync(filepath, uploadPath + '/' + basename);
 
+      file.path = uploadPath + '/' + basename;
+
+      if(think.isFile(file.path)){
+        console.log('is file')
+      }else{
+        console.log('not exist')
+      }
+
+      this.assign('fileInfo', file);
+
+       this.model('article').add({title: allParams._name ,content:allParams._intro ,catalogId:allParams._catalogId}).then(result=>{
+
+         console.log(allParams)
+         /*
          //要上传的空间
         var bucket = 'thinkjs';
 
@@ -62,7 +84,7 @@ module.exports = think.controller(Base, {
 
         //调用uploadFile上传
         uploadFile(token, key, filePath);
-
+        */
 
          return this.json({success: true , msg : "添加成功"});
 

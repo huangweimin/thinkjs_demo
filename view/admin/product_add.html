@@ -8,17 +8,17 @@
  <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
    <h3>
      <a href="/admin/product/list" class="actionBtn">文章列表</a>添加文章</h3>
-   <form action="article.php?rec=insert" method="post" enctype="multipart/form-data">
+   <form id="uploadForm" action="/admin/product/iadd" method="post" enctype="multipart/form-data">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
        <tr>
          <td width="90" align="right">文章名称</td>
          <td>
-           <input type="text" name="title" value="" size="80" class="inpMain" id="name" /></td>
+           <input type="text" name="_name" value="" size="80" class="inpMain" id="name" /></td>
        </tr>
        <tr>
          <td align="right">文章分类</td>
          <td>
-           <select name="cat_id" id="catalogId">
+           <select name="_catalogId" id="catalogId">
              <option value="0">选择目录</option>
              <option value="1">产品</option>
              <option value="2">新闻</option>
@@ -62,7 +62,7 @@
                prettyPrint();
              });</script>
            <!-- /KindEditor -->
-           <textarea id="intro" name="content" style="width:780px;height:400px;" class="textArea"></textarea>
+           <textarea id="intro" name="_intro" style="width:780px;height:400px;" class="textArea"></textarea>
          </td>
        </tr>
        <tr>
@@ -72,7 +72,7 @@
        <tr>
          <td></td>
          <td>
-           <button type="button" id="addProduct" class="btn btn-default">添加</button></td>
+           <button type="submit" id="addProduct" class="btn btn-default">添加</button></td>
        </tr>
      </table>
    </form>
@@ -82,12 +82,26 @@
 <%include inc/footer.html%>
 <script>
 
-  $(function(){
+  /*$(function(){
 
     //添加文章
     $("#addProduct").click(function(){
+      console.log($( '#uploadForm').serialize())
 
-      var _name = $('#name').val();
+      $.ajax({
+         url : "/admin/product/iadd",
+         type : "POST",
+         enctype: 'multipart/form-data',
+         data : $( '#uploadForm').serialize(),
+         success : function(data) {
+              console.log(data)
+         },
+         error : function(data) {
+            console.log(data)
+         }
+       });
+
+      /*var _name = $('#name').val();
       var _intro = $('#intro').val();
       var _catalogId = $('#catalogId').val();
       var _joinTime = date2str(new Date(),"yyyy-MM-dd hh:mm");
@@ -98,7 +112,7 @@
             url: "/admin/product/iadd",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify({ "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime,"_inpFlie":_inpFlie}),
+            data: { "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime,"_inpFlie":_inpFlie},
             success: function (result) {
                alert(result.msg);
                location.href = "/admin/product/list"
@@ -111,5 +125,5 @@
 
     })
 
-  })
+  })*/
 </script>
