@@ -43,39 +43,30 @@
 	</div>
 	<%include inc/footer.html%>
 	<script>
-
 	  $(function(){
-
+		  
 	    //删除分类
 	    $(".catalog-delete").click(function(){
-
-				 if(confirm("确定要删除分类?")){
-
-					 var _id = $(this).attr('data-id');
-
-		       $.ajax({
-		             type: "POST",
-		             url: "/admin/catalog/delete",
-		             contentType: "application/json",
-		             dataType: "json",
-		             data: JSON.stringify({ "_id": _id}),
-		             success: function (result) {
-		                 alert(result.msg);
-		                 location.href = "/admin/catalog/list"
-		             },
-		             error : function() {
-		                  alert(result.msg);
-		                  return false;
-		             }
-		         });
-
-				 }else{
-
-					 return false;
-
-				 }
-
+			if(confirm("确定要删除分类?")){
+				var _id = $(this).attr('data-id');
+				$.ajax({
+					type: "POST",
+					url: "/admin/catalog/delete",
+					contentType: "application/json",
+					dataType: "json",
+					data: JSON.stringify({ "_id": _id}),
+					success: function (result) {
+						alert(result.msg);
+						location.href = "/admin/catalog/list"
+					},
+					error : function() {
+						alert(result.msg);
+						return false;
+					}
+				});
+			}else{
+				return false;
+			}
 	    })
-
 	  })
 	</script>

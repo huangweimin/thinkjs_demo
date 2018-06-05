@@ -85,49 +85,42 @@
 
 //读取选择
 function testselected(id,temp){
-
   var selected = document.getElementById(id);
-
   for(i=0;i<selected.options.length;i++){
-       if(selected.options[i].value == temp){
-              selected.options[i].selected = true;
-       }
+    if(selected.options[i].value == temp){
+        selected.options[i].selected = true;
+    }
   }
-
 }
 
-  $(function(){
+$(function(){
 
-    //读取当前目录
-    var _catalogId_old = $('#catalogId').attr('data-id')
-    testselected('catalogId',_catalogId_old)
+  //读取当前目录
+  var _catalogId_old = $('#catalogId').attr('data-id')
+  testselected('catalogId',_catalogId_old)
 
-    //修改文章
-    $("#editProduct").click(function(){
-
-      var _name = $('#name').val();
-      var _intro = $('#intro').val();
-      var _catalogId = $('#catalogId').val();
-      var _joinTime = date2str(new Date(),"yyyy-MM-dd hh:mm");
-      var _id = $('.product_id').val();
-
-      $.ajax({
-            type: "POST",
-            url: "/admin/product/update",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify({ "_id": _id, "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime}),
-            success: function (result) {
-                alert(result.msg);
-                location.href = "/admin/product/list"
-            },
-            error : function() {
-                 alert(result.msg);
-                 return false;
-            }
-        });
-
-    })
-
+  //修改文章
+  $("#editProduct").click(function(){
+    var _name = $('#name').val();
+    var _intro = $('#intro').val();
+    var _catalogId = $('#catalogId').val();
+    var _joinTime = date2str(new Date(),"yyyy-MM-dd hh:mm");
+    var _id = $('.product_id').val();
+    $.ajax({
+          type: "POST",
+          url: "/admin/product/update",
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({ "_id": _id, "_name": _name,"_intro":_intro ,"_catalogId":_catalogId,"_joinTime":_joinTime}),
+          success: function (result) {
+              alert(result.msg);
+              location.href = "/admin/product/list"
+          },
+          error : function() {
+              alert(result.msg);
+              return false;
+          }
+      });
   })
+})
 </script>

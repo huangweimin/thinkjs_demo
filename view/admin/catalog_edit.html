@@ -31,17 +31,12 @@
 <div class="clear"></div>
 <%include inc/footer.html%>
 <script>
-
-
   $(function(){
-
-
+	  
     //修改目录
     $("#editCtalog").click(function(){
-
       var _name = $('#catalogName').val();
       var _id = $('.catalog_id').val();
-
       $.ajax({
             type: "POST",
             url: "/admin/catalog/update",
@@ -57,8 +52,6 @@
                  return false;
             }
         });
-
     })
-
   })
 </script>

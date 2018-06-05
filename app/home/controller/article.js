@@ -10,13 +10,18 @@ module.exports = think.controller(Base, {
   listAction: function(self){
 
     this.model('catalog').where({id:2}).select().then(result=>{
+
       var item = result[0];
+
       this.assign({
         title:item.name,
         list:item.article
       })
+
       return this.display();
+
     })
+    
   },
 
   detailAction: function(self){
@@ -24,16 +29,20 @@ module.exports = think.controller(Base, {
     var id = this.get("id");
 
     if(!id){
+
       return think.statusAction(404, this.http);
+
     }else{
+
       this.model('article').where({id:id}).find().then(result=>{
 
         this.assign(result);
+
         return this.display();
+
       });
+
     }
-
-
 
   }
 

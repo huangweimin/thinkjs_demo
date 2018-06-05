@@ -29,29 +29,26 @@
 </div>
 <div class="clear"></div>
 <%include inc/footer.html%>
-	<script>$(function() {
-
-			$("#addCatalog").click(function() {
-
-				var _name = $('#catalogName').val();
-
-				$.ajax({
-					type: "POST",
-					url: "/admin/catalog/iadd",
-					contentType: "application/json",
-					dataType: "json",
-					data: JSON.stringify({
-						"_name": _name
-					}),
-					success: function(result) {
-						alert(result.msg);
-						location.href = "/admin/catalog/list"
-					},
-					error: function() {
-						alert(result.msg);
-					}
-				});
-
-			})
-
-		})</script>
+<script>
+	$(function() {
+		$("#addCatalog").click(function() {
+			var _name = $('#catalogName').val();
+			$.ajax({
+				type: "POST",
+				url: "/admin/catalog/iadd",
+				contentType: "application/json",
+				dataType: "json",
+				data: JSON.stringify({
+					"_name": _name
+				}),
+				success: function(result) {
+					alert(result.msg);
+					location.href = "/admin/catalog/list"
+				},
+				error: function() {
+					alert(result.msg);
+				}
+			});
+		})
+	})
+</script>

@@ -13,7 +13,7 @@ module.exports = think.controller(Base, {
       this.model('article').where({id:'5'}).find().then(result=>{
 
         this.assign(result);
-
+        
         return this.display();
 
       });
